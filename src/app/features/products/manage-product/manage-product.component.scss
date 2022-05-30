@@ -1,0 +1,111 @@
+.manage-product {
+  .form {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    width: 100%;
+
+    h4 {
+      margin: 0px 0px 15px 0px;
+    }
+
+    .top-section {
+      .right-section {
+        height: 100%;
+
+        .model-field {
+          height: 100%;
+
+          textarea {
+            height: 107px;
+          }
+        }
+      }
+
+      .left-section {
+        .dates {
+          display: flex;
+          justify-content: space-between;
+          gap: 25px;
+
+          .date-field {
+            flex: 1;
+          }
+        }
+      }
+
+      .right-section,
+      .left-section {
+        flex: 1;
+      }
+    }
+
+    .bottom-section {
+      h4 {
+        margin: 0;
+      }
+
+      .models-section {
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        ::ng-deep {
+          .mat-form-field-wrapper {
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+          }
+        }
+
+        .model {
+          .model-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+
+            .fields {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              width: 100%;
+
+              .values {
+                display: flex;
+                gap: 4px;
+              }
+            }
+
+            .buttons {
+              .icon {
+                cursor: pointer;
+              }
+            }
+          }
+
+          mat-divider {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+
+    .field-full-width {
+      width: 100%;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+:host {
+  .mat-raised-button {
+    border-radius: 8px !important;
+    min-height: 40px;
+  }
+}
