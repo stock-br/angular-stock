@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   // baseUrl: 'http://10.147.20.49:5000/api'
-  baseUrl: 'http://localhost:5000/api'
-
+  baseUrl: process.env['BASE_URL']
+    ? process.env['BASE_URL']
+    : 'http://localhost:5000/api',
 };
 
 /*
