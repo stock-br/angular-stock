@@ -1,0 +1,100 @@
+// Material Customization
+@import "~@angular/material/theming";
+@include mat-core();
+
+// Mudança da fonte do Material
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins",
+);
+
+@include angular-material-typography($custom-typography);
+
+// Mudança do tema do Material
+$md-stockpalette0: (
+  50: #e4f3fb,
+  100: #bbe0f4,
+  200: #8ecbed,
+  300: #61b6e6,
+  400: #3fa7e0,
+  500: #1d97db,
+  600: #1a8fd7,
+  700: #1584d2,
+  800: #117acd,
+  900: #0a69c4,
+  A100: #eff6ff,
+  A200: #bcdbff,
+  A400: #89c0ff,
+  A700: #6fb2ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$custom-blue-app-primary: mat-palette($md-stockpalette0);
+$custom-blue-app-secondary: mat-palette($mat-indigo);
+$custom-blue-app-warn: mat-palette($mat-red);
+
+$custom-blue-theme: mat-light-theme(
+  $custom-blue-app-primary,
+  $custom-blue-app-secondary,
+  $custom-blue-app-warn
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-stockorangepalette0: (
+    50 : #fef2e4,
+    100 : #fddfbb,
+    200 : #fbca8e,
+    300 : #f9b461,
+    400 : #f8a43f,
+    500 : #f7941d,
+    600 : #f68c1a,
+    700 : #f58115,
+    800 : #f37711,
+    900 : #f1650a,
+    A100 : #ffffff,
+    A200 : #ffefe7,
+    A400 : #ffceb4,
+    A700 : #ffbe9b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$custom-orange-app-primary: mat-palette($md-stockorangepalette0);
+$custom-orange-app-secondary: mat-palette($mat-indigo);
+$custom-orange-app-warn: mat-palette($mat-red);
+
+$custom-orange-theme: mat-light-theme(
+  $custom-orange-app-primary,
+  $custom-orange-app-secondary,
+  $custom-orange-app-warn
+);
+
+@include angular-material-theme($custom-blue-theme);
