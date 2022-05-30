@@ -1,0 +1,36 @@
+.side-nav {
+  background-color: #252525;
+  height: 100%;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .top-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 45px;
+  }
+
+  .bottom-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .icon {
+    color: white;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    &.active {
+      color: white;
+    }
+    &.inactive {
+      color: #858585;
+    }
+  }
+}
