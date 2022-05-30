@@ -1,0 +1,98 @@
+<div class="products">
+  <h4>Gerencie seus produtos de maneira fácil e rápida!</h4>
+
+  <div class="table">
+    <mat-card class="mat-elevation-z0 header-table">
+      <mat-card-content>
+        <div class="header-filters">
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="['./criar-produto']"
+          >
+            Novo
+          </button>
+          <input
+            class="text-search-input"
+            (keyup)="searchOnKeyUp($event)"
+            [(ngModel)]="searchTextToFilter"
+            placeholder="Busque pelo nome do produto"
+          />
+
+          <button mat-button color="primary" (click)="resetFilters()">
+            Limpar Filtros
+          </button>
+
+          <button mat-raised-button color="primary" (click)="searchUsers()">
+            Buscar
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <loading-container *ngIf="!dataSource"></loading-container>
+
+    <mat-table
+      *ngIf="dataSource"
+      [dataSource]="dataSource"
+      class="mat-elevation-z2"
+    >
+      <div class="teste"></div>
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell
+          (click)="openProduct(element)"
+          class="product-line"
+          *matCellDef="let element"
+        >
+          <span class="name">{{ element.name }} </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="criacao">
+        <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+        <mat-cell
+          (click)="openProduct(element)"
+          class="product-line"
+          *matCellDef="let element"
+        >
+          <span class="created-at"
+            >{{ element.createdAt | date: "short" }}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="atualizacao">
+        <mat-header-cell *matHeaderCellDef>
+          Data de Atualização
+        </mat-header-cell>
+        <mat-cell
+          (click)="openProduct(element)"
+          class="product-line"
+          *matCellDef="let element"
+        >
+          <span class="updated-at"
+            >{{ element.updatedAt | date: "short" }}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="product-line" *matCellDef="let element">
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteProduct(element)"
+            aria-label="Botão de deletar produto"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let productRow; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+</div>
