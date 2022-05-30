@@ -66,10 +66,9 @@ export class ManageProductComponent implements OnInit {
       name: product.name,
       createdAt: product.createdAt?.slice(0, 16),
       updatedAt: product.updatedAt?.slice(0, 16),
-      model: JSON.stringify(product.model),
     });
 
-    this.fillModels(product.model);
+    this.fillModels(product.models);
   }
 
   get models(): FormArray {
@@ -87,21 +86,20 @@ export class ManageProductComponent implements OnInit {
     this.models.push(model);
   }
 
-  fillModels(modelReceived: Model) {
-    let modelForPush: FormGroup = new FormGroup({
-      description: new FormControl(
-        modelReceived.description,
-        Validators.required
-      ),
-      costValue: new FormControl(modelReceived.costValue, Validators.required),
-      saleValue: new FormControl(modelReceived.saleValue, Validators.required),
-      minimumAmount: new FormControl(
-        modelReceived.minimumAmount,
-        Validators.required
-      ),
-    });
+  fillModels(modelReceived: Model[]) {
+    modelReceived.forEach((model) => {
+      let modelForPush: FormGroup = new FormGroup({
+        description: new FormControl(model.description, Validators.required),
+        costValue: new FormControl(model.costValue, Validators.required),
+        saleValue: new FormControl(model.saleValue, Validators.required),
+        minimumAmount: new FormControl(
+          model.minimumAmount,
+          Validators.required
+        ),
+      });
 
-    this.models.push(modelForPush);
+      this.models.push(modelForPush);
+    });
   }
 
   removeModel(index: number) {
@@ -110,10 +108,7 @@ export class ManageProductComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.valid && this.models.length > 0) {
-      let productToSend: any = {
-        name: this.productForm.controls['name'].value,
-        model: this.productForm.controls['models'].value[0],
-      };
+      let productToSend: any = this.productForm.value;
 
       let service = this.isEdition
         ? this.productsService.updateProduct(
@@ -126,7 +121,7 @@ export class ManageProductComponent implements OnInit {
         (response) => {
           this.toastr.success(
             `Produto ${this.isEdition ? 'editado' : 'criado'}  com sucesso.`,
-            'Produto criado!'
+            `Produto ${this.isEdition ? 'editado' : 'criado'}!`
           );
           this.router.navigate([`produtos`]);
         },

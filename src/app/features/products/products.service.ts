@@ -35,9 +35,10 @@ export interface Product {
   name: string;
   createdAt?: string;
   updatedAt?: string;
-  model: Model;
+  models: Model[];
 }
 export interface Model {
+  _id?: string;
   description: string;
   minimumAmount: number;
   costValue: number;
