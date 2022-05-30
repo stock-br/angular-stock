@@ -1,0 +1,28 @@
+<div class="side-menu">
+  <div class="side-header">
+    <div class="title-header">
+      <img src="../../../../assets//imgs/logo.svg" alt="Logo" />
+      <h1>Stock</h1>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div
+      *ngFor="let section of dataSections"
+      class="section"
+      [ngClass]="section.selected ? 'selected' : 'unselected'"
+      (click)="openSection(section.link)"
+    >
+      <div class="selector"></div>
+      <div class="tab">
+        <mat-icon
+          class="material-icons-round icon active"
+          aria-hidden="false"
+          aria-label="Ícone de usuário"
+          >{{ section.icon }}</mat-icon
+        >
+        <span class="label"> {{ section.label }} </span>
+      </div>
+    </div>
+  </div>
+</div>
