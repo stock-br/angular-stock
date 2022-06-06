@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Model, Product, ProductsService } from '../products.service';
@@ -13,17 +13,17 @@ export class ManageProductComponent implements OnInit {
   public isEdition: boolean = false;
   public productIdLoaded: any;
   public productLoaded: any;
-  public productForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    createdAt: new FormControl(
+  public productForm: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', Validators.required),
+    createdAt: new UntypedFormControl(
       { value: '', disabled: true },
       Validators.required
     ),
-    updatedAt: new FormControl(
+    updatedAt: new UntypedFormControl(
       { value: '', disabled: true },
       Validators.required
     ),
-    models: new FormArray([], Validators.required),
+    models: new UntypedFormArray([], Validators.required),
   });
 
   public isLoaded: boolean = false;
@@ -71,16 +71,16 @@ export class ManageProductComponent implements OnInit {
     this.fillModels(product.models);
   }
 
-  get models(): FormArray {
-    return this.productForm.get('models') as FormArray;
+  get models(): UntypedFormArray {
+    return this.productForm.get('models') as UntypedFormArray;
   }
 
   addModel() {
-    let model: FormGroup = new FormGroup({
-      description: new FormControl('', Validators.required),
-      costValue: new FormControl(null, Validators.required),
-      saleValue: new FormControl(null, Validators.required),
-      minimumAmount: new FormControl(null, Validators.required),
+    let model: UntypedFormGroup = new UntypedFormGroup({
+      description: new UntypedFormControl('', Validators.required),
+      costValue: new UntypedFormControl(null, Validators.required),
+      saleValue: new UntypedFormControl(null, Validators.required),
+      minimumAmount: new UntypedFormControl(null, Validators.required),
     });
 
     this.models.push(model);
@@ -88,11 +88,11 @@ export class ManageProductComponent implements OnInit {
 
   fillModels(modelReceived: Model[]) {
     modelReceived.forEach((model) => {
-      let modelForPush: FormGroup = new FormGroup({
-        description: new FormControl(model.description, Validators.required),
-        costValue: new FormControl(model.costValue, Validators.required),
-        saleValue: new FormControl(model.saleValue, Validators.required),
-        minimumAmount: new FormControl(
+      let modelForPush: UntypedFormGroup = new UntypedFormGroup({
+        description: new UntypedFormControl(model.description, Validators.required),
+        costValue: new UntypedFormControl(model.costValue, Validators.required),
+        saleValue: new UntypedFormControl(model.saleValue, Validators.required),
+        minimumAmount: new UntypedFormControl(
           model.minimumAmount,
           Validators.required
         ),

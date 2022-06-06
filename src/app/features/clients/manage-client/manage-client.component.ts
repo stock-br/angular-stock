@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Client, ClientsService } from '../clients.service';
@@ -13,17 +13,17 @@ export class ManageClientComponent implements OnInit {
   public isEdition: boolean = false;
   public productIdLoaded: any;
   public productLoaded: any;
-  public clientForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
-    cep: new FormControl('', Validators.required),
-    createdAt: new FormControl(
+  public clientForm: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', Validators.required),
+    address: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl('', Validators.required),
+    phoneNumber: new UntypedFormControl('', Validators.required),
+    cep: new UntypedFormControl('', Validators.required),
+    createdAt: new UntypedFormControl(
       { value: '', disabled: true },
       Validators.required
     ),
-    updatedAt: new FormControl(
+    updatedAt: new UntypedFormControl(
       { value: '', disabled: true },
       Validators.required
     ),
