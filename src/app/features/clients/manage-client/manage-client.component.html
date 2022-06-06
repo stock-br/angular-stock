@@ -1,0 +1,142 @@
+<loading-container *ngIf="!isLoaded"></loading-container>
+<div *ngIf="isLoaded" class="manage-product">
+  <form [formGroup]="clientForm" class="form">
+    <div class="top-section">
+      <div class="left-section">
+        <h4>Informações do Cliente</h4>
+
+        <mat-form-field class="field-full-width" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input formControlName="name" matInput form />
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width" appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input formControlName="cep" mask="00.000-000" matInput form />
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width" appearance="outline">
+          <mat-label>Endereço</mat-label>
+          <input formControlName="address" matInput form />
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input formControlName="email" matInput form />
+        </mat-form-field>
+
+        <mat-form-field class="field-full-width" appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input formControlName="phoneNumber" matInput form />
+        </mat-form-field>
+        <!--
+        <div *ngIf="isEdition" class="dates">
+          <mat-form-field class="date-field" appearance="outline">
+            <mat-label>Data de Criação</mat-label>
+            <input formControlName="createdAt" type="datetime-local" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="date-field" appearance="outline">
+            <mat-label>Data de Atualização</mat-label>
+            <input formControlName="updatedAt" type="datetime-local" matInput />
+          </mat-form-field>
+        </div> -->
+      </div>
+
+      <div class="right-section">
+        <!-- <mat-form-field
+          class="field-full-width model-field"
+          appearance="outline"
+        >
+          <mat-label>Modelo</mat-label>
+          <textarea
+            matInput
+            formControlName="model"
+            placeholder="Ex. 100 Main St"
+          ></textarea>
+        </mat-form-field> -->
+      </div>
+    </div>
+
+    <div class="bottom-section">
+      <!-- <div class="models-section">
+        <ng-container formArrayName="models" class="models">
+          <h4 *ngIf="models.length > 0">Modelos</h4>
+
+          <div class="model" *ngFor="let model of models.controls; index as i">
+            <mat-divider
+              [ngStyle]="i < 1 ? { display: 'none' } : {}"
+            ></mat-divider>
+
+            <div class="model-area">
+              <div class="fields">
+                <ng-container [formGroupName]="i">
+                  <div class="values">
+                    <mat-form-field
+                      class="field-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label
+                        >Valor de Custo do Modelo {{ i + 1 }}</mat-label
+                      >
+                      <input
+                        formControlName="costValue"
+                        currencyMask
+                        matInput
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field
+                      class="field-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label
+                        >Valor de Venda do Modelo {{ i + 1 }}</mat-label
+                      >
+                      <input
+                        formControlName="saleValue"
+                        currencyMask
+                        matInput
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field
+                      class="field-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label
+                        >Quantidade Mínima do Modelo {{ i + 1 }}</mat-label
+                      >
+                      <input formControlName="minimumAmount" matInput />
+                    </mat-form-field>
+                  </div>
+
+                  <mat-form-field class="field-full-width" appearance="outline">
+                    <mat-label>Descrição do Modelo {{ i + 1 }}</mat-label>
+                    <input formControlName="description" matInput />
+                  </mat-form-field>
+                </ng-container>
+              </div>
+
+              <div class="buttons">
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="removeModel(i)"
+                  aria-label="Botão de deletar modelo"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div> -->
+    </div>
+  </form>
+  <div class="action-buttons">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+  </div>
+</div>

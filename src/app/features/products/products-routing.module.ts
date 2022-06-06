@@ -6,9 +6,9 @@ import { ProductsComponent } from './list/products.component';
 const routes: Routes = [
   { path: '', component: ProductsComponent, data: { title: 'Produtos' } },
   {
-    path: 'criar-produto',
+    path: 'cadastrar-produto',
     component: ManageProductComponent,
-    data: { title: 'Criar Produto' },
+    data: { title: 'Cadastrar Produto' },
   },
   {
     path: 'editar-produto/:id',

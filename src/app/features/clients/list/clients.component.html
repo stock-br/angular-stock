@@ -1,5 +1,5 @@
 <div class="products">
-  <h4>Gerencie seus produtos de maneira fácil e rápida!</h4>
+  <h4>Gerencie seus clientes de maneira fácil e rápida!</h4>
 
   <div class="table">
     <mat-card class="mat-elevation-z0 header-table">
@@ -8,7 +8,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="['./cadastrar-produto']"
+            [routerLink]="['./cadastrar-cliente']"
           >
             Novo
           </button>
@@ -16,7 +16,7 @@
             class="text-search-input"
             (keyup)="searchOnKeyUp($event)"
             [(ngModel)]="searchTextToFilter"
-            placeholder="Busque pelo nome do produto"
+            placeholder="Busque pelo nome do cliente"
           />
 
           <button mat-button color="primary" (click)="resetFilters()">
@@ -40,7 +40,7 @@
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
         <mat-cell
-          (click)="openProduct(element)"
+          (click)="openClient(element)"
           class="product-line"
           *matCellDef="let element"
         >
@@ -48,16 +48,14 @@
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="criacao">
-        <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
         <mat-cell
-          (click)="openProduct(element)"
+          (click)="openClient(element)"
           class="product-line"
           *matCellDef="let element"
         >
-          <span class="created-at"
-            >{{ element.createdAt | date: "short" }}
-          </span>
+          <span class="email">{{ element.email }} </span>
         </mat-cell>
       </ng-container>
 
@@ -66,7 +64,7 @@
           Data de Atualização
         </mat-header-cell>
         <mat-cell
-          (click)="openProduct(element)"
+          (click)="openClient(element)"
           class="product-line"
           *matCellDef="let element"
         >
@@ -83,7 +81,7 @@
             <button
               mat-icon-button
               color="warn"
-              (click)="deleteProduct(element)"
+              (click)="deleteClient(element)"
               aria-label="Botão de deletar produto"
             >
               <mat-icon>delete</mat-icon>

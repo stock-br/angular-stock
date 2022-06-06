@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () =>
-      import('./features/home/home.module').then((m) => m.HomeModule)
+      import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'produtos',
@@ -23,6 +23,11 @@ const routes: Routes = [
       import('./features/products/products.module').then(
         (m) => m.ProductsModule
       ),
+  },
+  {
+    path: 'clientes',
+    loadChildren: () =>
+      import('./features/clients/clients.module').then((m) => m.ClientsModule),
   },
   {
     path: '**',
