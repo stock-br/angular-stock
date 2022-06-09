@@ -14,25 +14,28 @@ import { PagesService } from './core/domains/pages.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'stock-web';
+  fullPage = false;
 
   constructor(
     public pageService: PagesService,
     private router: Router,
-    private activedRoute: ActivatedRoute
   ) {
     this.router.events.subscribe((value) => {
-      if (value instanceof ActivationEnd && value.snapshot.data['title']) {
-        this.pageService.changeTitle(value.snapshot.data['title']);
+      if (value instanceof ActivationEnd) {
+        if (value.snapshot.data['title']) {
+          this.pageService.changeTitle(value.snapshot.data['title']);
+        }
+
+        if (value.snapshot.data['fullPage']) {
+          this.fullPage = value.snapshot.data['fullPage'];
+        }
+
+        if (!value.snapshot.data['fullPage']) {
+          this.fullPage = false;
+        }
       }
     });
   }
 
   ngOnInit(): void {}
-
-  handleRouteChange() {
-    console.log('Mudou a rota: ', this.activedRoute);
-
-    // console.log('Mudou teste');
-  }
 }

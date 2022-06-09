@@ -1,12 +1,12 @@
 <div class="main">
-  <side-nav></side-nav>
-  <side-menu></side-menu>
+  <side-nav *ngIf="!fullPage"></side-nav>
+  <side-menu *ngIf="!fullPage"></side-menu>
   <div class="content-section">
-    <div class="header">
+    <div class="header" *ngIf="!fullPage">
       <header-nav [title]="pageService.pageTitle"></header-nav>
     </div>
 
-    <div class="content">
+    <div class="content" [class.full-page]="fullPage">
       <router-outlet></router-outlet>
     </div>
   </div>

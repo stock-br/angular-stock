@@ -1,0 +1,52 @@
+<div class="login">
+  <div class="left-section">
+    <div class="background"></div>
+    <div class="logo">
+      <img src="../../../../assets/imgs/logo.svg" alt="Logo" />
+      <!-- <h1>Stock</h1> -->
+    </div>
+  </div>
+  <div class="right-section">
+    <div class="form-login">
+      <h1>Login</h1>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          placeholder="usuario@email.com"
+          formControlName="email"
+          type="email"
+          matInput
+        />
+      </mat-form-field>
+
+      <mat-form-field class="field password" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input
+          placeholder="Senha"
+          [type]="passwordVisible ? 'text' : 'password'"
+          formControlName="password"
+          matInput
+        />
+        <mat-icon
+          class="icon-password material-icons-outlined"
+          (click)="passwordVisible = !passwordVisible"
+        >
+          {{ passwordVisible ? "visibility" : "visibility_off" }}</mat-icon
+        >
+      </mat-form-field>
+
+      <mat-checkbox class="checkbox" color="primary">
+        Lembrar usuário
+      </mat-checkbox>
+
+      <button
+        class="login-button"
+        color="primary"
+        mat-raised-button
+        (click)="login()"
+      >
+        Entrar
+      </button>
+    </div>
+  </div>
+</div>

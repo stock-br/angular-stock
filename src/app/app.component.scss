@@ -16,8 +16,11 @@
       width: 100%;
       padding: 25px;
       box-sizing: border-box;
+
+      &.full-page {
+        padding: 0;
+        height: 100%;
+      }
     }
   }
 }
-
-

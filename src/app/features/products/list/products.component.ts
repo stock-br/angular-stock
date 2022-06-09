@@ -50,8 +50,6 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.productsService.getProducts().subscribe(
       (response: Product) => {
-        console.log('Resposta:', response);
-
         this.dataSource = response;
       },
       (error) => {
@@ -65,8 +63,6 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    console.log('Produto: ', product);
-
     this.productsService.deleteProduct(product).subscribe(
       (response) => {
         this.toastr.success(

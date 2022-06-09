@@ -50,8 +50,6 @@ export class ClientsComponent implements OnInit {
   getClients() {
     this.clientsService.getClients().subscribe(
       (response: Client) => {
-        console.log('Resposta:', response);
-
         this.dataSource = response;
       },
       (error) => {
@@ -65,8 +63,6 @@ export class ClientsComponent implements OnInit {
   }
 
   deleteClient(client: Client) {
-    console.log('Cliente: ', client);
-
     this.clientsService.deleteClient(client).subscribe(
       (response) => {
         this.toastr.success(
