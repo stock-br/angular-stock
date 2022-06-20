@@ -34,11 +34,14 @@
 
     <mat-table
       *ngIf="dataSource"
+      matSort
       [dataSource]="dataSource"
       class="mat-elevation-z2"
     >
       <ng-container matColumnDef="nome">
-        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          Nome
+        </mat-header-cell>
         <mat-cell
           (click)="openProduct(element)"
           class="product-line"
@@ -49,7 +52,9 @@
       </ng-container>
 
       <ng-container matColumnDef="criacao">
-        <mat-header-cell *matHeaderCellDef> Data de Criação </mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
+          Data de Criação
+        </mat-header-cell>
         <mat-cell
           (click)="openProduct(element)"
           class="product-line"
@@ -62,7 +67,7 @@
       </ng-container>
 
       <ng-container matColumnDef="atualizacao">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>
           Data de Atualização
         </mat-header-cell>
         <mat-cell
@@ -77,7 +82,7 @@
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef></mat-header-cell>
         <mat-cell class="product-line" *matCellDef="let element">
           <div class="actions">
             <button

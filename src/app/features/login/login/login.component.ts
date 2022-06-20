@@ -5,6 +5,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/domains/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +21,34 @@ export class LoginComponent implements OnInit {
 
   public passwordVisible = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
   login() {
+    console.log(this.loginForm);
+
+    this.authService.login(this.loginForm.value).subscribe(
+      (response) => {
+        // this.router.navigate(['/']);
+        this.toastr.success(`Logou com sucesso!`, 'Logou!');
+        window.localStorage.setItem('auth_data', JSON.stringify(response));
+
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+        this.toastr.error(`Erro ao realizar login.`, 'Erro!');
+
+        window.localStorage.clear();
+      }
+    );
+
     console.log(this.loginForm.value);
-    this.router.navigate(['/inicio']);
+    // this.router.navigate(['/inicio']);
   }
 }

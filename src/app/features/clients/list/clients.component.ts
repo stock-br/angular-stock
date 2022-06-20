@@ -72,7 +72,7 @@ export class ClientsComponent implements OnInit {
         this.getClients();
       },
       (error) => {
-        this.toastr.success(`Erro ao deletar cliente.`, 'Erro!');
+        this.toastr.error(`Erro ao deletar cliente.`, 'Erro!');
       }
     );
   }
